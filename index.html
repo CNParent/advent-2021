@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Advent of Code 2021</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="util.js"></script>
+</head>
+<body>
+    <div style="display: flex;">
+        <ul id="nav"></ul>
+        <p id="output" style="flex-grow: 1;">Select a day from the list!</p>
+    </div>
+    <script>
+        let nav = document.querySelector('#nav');
+        nav.innerHTML = [...new Array(1)].map((x,i) => `
+                <li><a data-dir="day${i+1}" data-exec="day${i+1}_1" href="javascript:;">day ${i+1} (part 1)</a></li>
+                <li><a data-dir="day${i+1}" data-exec="day${i+1}_2" href="javascript:;">day ${i+1} (part 2)</a></li>
+        `).reduce((a,b) => `${a}${b}`, '');
+
+        let scripts = {};
+        let terminal = document.querySelector('#output');
+        document.querySelectorAll('[data-exec]')
+            .forEach(async x => {
+                await loadScript(`${x.dataset.dir}/${x.dataset.exec}.js`);
+                x.addEventListener('click', scripts[x.dataset.exec]);
+            });
+    </script>
+</body>
+</html>
