@@ -5,8 +5,8 @@ scripts.day3_1 = async () => {
     let rates = [];
     for(let i = 0; i < digits; i++) {
         rates.push({
-            one: filteredNumbers.map(x => x[i] == '1' ? 1 : 0).reduce((a,b) => a + b, 0),
-            zero: filteredNumbers.map(x => x[i] == '0' ? 1 : 0).reduce((a,b) => a + b, 0)
+            one: numbers.map(x => x[i] == '1' ? 1 : 0).reduce((a,b) => a + b, 0),
+            zero: numbers.map(x => x[i] == '0' ? 1 : 0).reduce((a,b) => a + b, 0)
         });
     }
     
