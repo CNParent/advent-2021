@@ -3,17 +3,13 @@ scripts.day3_1 = async () => {
     let numbers = data.split('\r\n');
     let digits = numbers[0].length;
     let rates = [];
-    while(rates.length < digits)
-        rates.push({ one: 0, zero: 0 });
-
-    numbers.forEach((x) => {
-        for(let i = 0; i < x.length; i++) {
-            let bit = x.substr(i, 1);
-            if (bit == '1') rates[i].one++;
-            if (bit == '0') rates[i].zero++;
-        }
-    });
-
+    for(let i = 0; i < digits; i++) {
+        rates.push({
+            one: filteredNumbers.map(x => x[i] == '1' ? 1 : 0).reduce((a,b) => a + b, 0),
+            zero: filteredNumbers.map(x => x[i] == '0' ? 1 : 0).reduce((a,b) => a + b, 0)
+        });
+    }
+    
     let gamma2 = '';
     let epsilon2 = '';
     for(let i = 0; i < rates.length; i++) {
