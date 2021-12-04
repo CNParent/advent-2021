@@ -13,13 +13,8 @@ scripts.day3_1 = async () => {
     let gamma2 = '';
     let epsilon2 = '';
     for(let i = 0; i < rates.length; i++) {
-        if (rates[i].one > rates[i].zero) {
-            gamma2 += '1';
-            epsilon2 += '0';
-        } else {
-            gamma2 += '0';
-            epsilon2 += '1';
-        }
+        gamma2 += rates[i].one >= rates[i].zero ? '1' : '0';
+        epsilon2 += rates[i].one >= rates[i].zero ? '0' : '1';
     }
 
     let gamma = parseInt(gamma2, 2);
