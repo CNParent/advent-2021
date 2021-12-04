@@ -9,19 +9,17 @@ scripts.day3_2 = async () => {
         }
     }
 
-    let filterNumbers = (filteredNumbers = numbers, bit = 0, mode = 'common') => {
+    let filterNumbers = (compare, filteredNumbers = numbers, bit = 0) => {
         let rate = rateAt(filteredNumbers, bit);
-        let bitValue = rate.one >= rate.zero ? 1 : 0;
-        if (mode != 'common') bitValue = Math.abs(bitValue - 1);
-
+        let bitValue = compare(rate.one, rate.zero) ? 1 : 0;
         let results = filteredNumbers.filter(x => x[bit] == bitValue);
         if (results.length == 1) return results[0];
 
-        return filterNumbers(results, bit + 1, mode);
+        return filterNumbers(compare, results, bit + 1);
     };
 
-    let oxygen2 = filterNumbers(numbers, 0, 'common');
-    let co22 = filterNumbers(numbers, 0, 'uncommon');
+    let oxygen2 = filterNumbers((a,b) => a >= b);
+    let co22 = filterNumbers((a,b) => a < b);
 
     let oxygen = parseInt(oxygen2, 2);
     let co2 = parseInt(co22, 2);
