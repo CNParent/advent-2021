@@ -5,14 +5,13 @@ scripts.day5_2 = async () => {
     let allPoints = lines.reduce((a,b) => a.concat(b.points), []);
     let done = new Set();
     let overlapping = new Set();
-    for(let i = 0; i < allPoints.length; i++) {
-        let point = allPoints[i];
+    allPoints.forEach(point => {
         let key = `${point.x},${point.y}`;
         if (done.has(key)) 
             overlapping.add(key);
 
         done.add(key);
-    }
+    });
 
     terminal.textContent = `There are ${overlapping.size} points where at least two lines overlap`;
 }
