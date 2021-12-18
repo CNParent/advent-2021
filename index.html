@@ -9,11 +9,11 @@
 <body>
     <div style="display: flex;">
         <ul id="nav"></ul>
-        <p id="output" style="flex-grow: 1;">Select a day from the list!</p>
+        <p id="output" style="flex-grow: 1; white-space: pre;">Select a day from the list!</p>
     </div>
     <script>
         let nav = document.querySelector('#nav');
-        nav.innerHTML = [...new Array(17)].map((x,i) => `
+        nav.innerHTML = [...new Array(18)].map((x,i) => `
                 <li><a data-dir="day${i+1}" data-exec="day${i+1}_1" href="javascript:;">day ${i+1} (part 1)</a></li>
                 <li><a data-dir="day${i+1}" data-exec="day${i+1}_2" href="javascript:;">day ${i+1} (part 2)</a></li>
         `).reduce((a,b) => `${a}${b}`, '');
